@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">YZRecord</string>
+
+    <string name="record">开始拍</string>
+    <string name="fx">特技</string>
+    <string name="back_facing">前置摄像头</string>
+    <string name="flush">开启补光灯</string>
+    <string name="auto_focus">开启自动聚焦</string>
+    <string name="zoom">缩    放</string>
+    <string name="expose">曝光补偿</string>
+    <string name="strength">磨    皮</string>
+    <string name="reddening">红    润</string>
+    <string name="whitening">美    白</string>
+    <string name="preview_failed">启动预览失败</string>
+    <string name="defaultValue">0.0</string>
+    <string name="openBeauty">开启美颜</string>
+    <string name="closeBeauty">关闭美颜</string>
+</resources>

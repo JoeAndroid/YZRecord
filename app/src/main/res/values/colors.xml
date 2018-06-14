@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="blue">#CC3DB5FE</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray">#4D000000</color>
+
+    <color name="colorSelItem">#3db5fe</color>
+    <color name="colorUnSelItem">#e7f5ff</color>
+    <color name="colorSelItemText">#ffffff</color>
+    <color name="colorUnSelItemText">#67a5d2</color>
+    <color name="colorUnSelMenuText">#546676</color>
+
+    <color name="record_fill_progress">#ff904c</color>
+    <color name="editor_overlay_line">#959595</color>
+    <color name="holo_red_dark">#ffcc0000</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="black_opacity_70pct">#808080</color>
+</resources>

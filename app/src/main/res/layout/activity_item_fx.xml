@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="15dp">
+
+    <ImageView
+        android:id="@+id/fxThumb"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/none"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/fxName"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fxThumb"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+</RelativeLayout>

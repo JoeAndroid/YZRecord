@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/font_face_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="大小"
+            android:textSize="13sp"
+            android:textColor="#535353" />
+
+        <SeekBar
+            android:id="@+id/font_size_seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:progressDrawable="@drawable/play_seek_bar"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:maxHeight="2dp"
+            android:thumb="@mipmap/block" />
+
+        <TextView
+            android:id="@+id/cur_font_size_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="50"
+            android:textSize="13sp"
+            android:textColor="#535353"/>
+
+    </LinearLayout>
+
+</LinearLayout>

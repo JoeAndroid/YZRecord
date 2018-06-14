@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shape_gray_circle_button"/>
+    <item android:top="5.5dp" android:left="5.5dp" android:bottom="5.5dp" android:right="5.5dp">
+        <level-list>
+            <item android:maxLevel="1" android:drawable="@mipmap/flash_off"/>
+            <item android:maxLevel="2" android:drawable="@mipmap/flash_on"/>
+        </level-list>
+    </item>
+</layer-list>

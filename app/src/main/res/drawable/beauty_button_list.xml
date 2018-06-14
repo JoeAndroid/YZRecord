@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <level-list>
+            <item android:maxLevel="1" android:drawable="@drawable/shape_gray_circle_button"/>
+            <item android:maxLevel="2" android:drawable="@drawable/shape_blue_circle_button"/>
+        </level-list>
+    </item>
+    <item android:top="8dp" android:left="10dp" android:bottom="8dp" android:right="10dp" android:drawable="@mipmap/beauty"/>
+</layer-list>

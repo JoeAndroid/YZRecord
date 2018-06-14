@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/edit_sticker_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp">
+
+        <Button
+            android:id="@+id/horizontal_flip_btn"
+            android:layout_width="78dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:background="@null"
+            android:drawableLeft="@mipmap/edit_mirror_horizontal"
+            android:drawablePadding="5dp"
+            android:text="水平翻转"
+            android:textColor="#373737"
+            android:textSize="13dp"
+            />
+
+        <Button
+            android:id="@+id/vertical_flip_btn"
+            android:layout_width="78dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:background="@null"
+            android:drawableLeft="@mipmap/edit_mirror_vertical"
+            android:drawablePadding="5dp"
+            android:text="垂直翻转"
+            android:textColor="#373737"
+            android:textSize="13dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="大小"
+            android:textSize="13sp"
+            android:textColor="#535353"/>
+
+        <SeekBar
+            android:id="@+id/sticker_size_seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:progressDrawable="@drawable/play_seek_bar"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:maxHeight="2dp"
+            android:thumb="@mipmap/block" />
+
+        <TextView
+            android:id="@+id/sticker_size_cur_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="0%"
+            android:textSize="13sp"
+            android:textColor="#535353"/>
+
+    </LinearLayout>
+
+</LinearLayout>

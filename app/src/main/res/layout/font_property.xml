@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/font_property_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粗体"
+            android:textSize="12sp"
+            android:textColor="#535353"
+            android:layout_gravity="center_vertical"/>
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/font_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SwitchButtonStyleMD"
+            android:layout_gravity="center_vertical"
+            android:gravity="center" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="斜体"
+            android:textSize="12sp"
+            android:textColor="#535353"
+            android:layout_gravity="center_vertical"/>
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/font_italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SwitchButtonStyleMD"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:textColor="#535353"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阴影"
+            android:textSize="12sp"
+            android:textColor="#535353"
+            android:layout_gravity="center_vertical"/>
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/font_shadow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SwitchButtonStyleMD"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+</LinearLayout>

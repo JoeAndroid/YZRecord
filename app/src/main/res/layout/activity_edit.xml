@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@mipmap/navigationbg">
+
+        <TextView
+            android:id="@+id/tvCompileVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="下一步"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/live_window_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.yanzhi.record.edit.LiveWindow
+            android:id="@+id/live_window"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.yanzhi.record.utils.DrawRect
+            android:id="@+id/draw_rect_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/live_window"
+            android:layout_alignTop="@id/live_window"
+            android:clickable="true" />
+
+        <RelativeLayout
+            android:id="@+id/live_window_bg_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/live_window"
+            android:layout_alignTop="@id/live_window"
+            android:background="#000000">
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="86dp"
+                android:text="请添加一些你喜欢的视频"
+                android:textColor="#d6d6d6"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="86dp"
+                android:text="please add some videos you like"
+                android:textColor="#a3a3a3"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    // seekBar
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <LinearLayout
+            android:id="@+id/play_ctrl_layout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="9dp">
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"></View>
+
+            <ImageButton
+                android:id="@+id/play_video"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@mipmap/play" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"></View>
+
+            <SeekBar
+                android:id="@+id/play_seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:maxHeight="2dp"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:progressDrawable="@drawable/play_seek_bar"
+                android:thumb="@mipmap/block" />
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"></View>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cur_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="55dp"
+            android:text="00:00"
+            android:textColor="#b1b1b1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/all_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:text="00:00"
+            android:textColor="#b1b1b1"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <!-- <TextView
+         android:id="@+id/tvCompileVideo"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:text="合成视频"
+         android:textSize="18sp" />
+     <TextView
+         android:id="@+id/tvMoveSub"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="10dp"
+         android:text="移动字幕"
+         android:textSize="18sp" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible">
+
+        // 添加字幕或者贴纸
+
+        <RelativeLayout
+            android:id="@+id/add_asset_layout"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/left_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_weight="1">
+
+                    <View
+                        android:id="@+id/add_caption_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ellipse_btn_selector" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true">
+
+                        <Button
+                            android:id="@+id/add_caption_btn"
+                            android:layout_width="78dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:background="@null"
+                            android:drawableLeft="@mipmap/caption_add"
+                            android:drawablePadding="5dp"
+                            android:text="添加字幕"
+                            android:textColor="#008bff"
+                            android:textSize="15dp" />
+
+                        <View
+                            android:layout_width="15dp"
+                            android:layout_height="15dp" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="#C0C0C0" />
+
+
+                        <RelativeLayout
+                            android:layout_width="60dp"
+                            android:layout_height="match_parent">
+
+
+                            <ImageView
+                                android:id="@+id/edit_caption_btn_bgImg"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_centerInParent="true"
+                                android:alpha="0.3"
+                                android:background="@mipmap/sticker_edit" />
+
+                            <Button
+                                android:id="@+id/edit_caption_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="40dp" />
+
+                <RelativeLayout
+                    android:id="@+id/right_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="17dp"
+                    android:layout_weight="1">
+
+                    <View
+                        android:id="@+id/add_sticker_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ellipse_btn2_selector" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true">
+
+                        <Button
+                            android:id="@+id/add_sticker_btn"
+                            android:layout_width="78dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="16dp"
+                            android:background="@null"
+                            android:drawableLeft="@mipmap/sticker_add"
+                            android:drawablePadding="5dp"
+                            android:text="添加贴纸"
+                            android:textColor="#384bff"
+                            android:textSize="15dp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="#C0C0C0" />
+
+                        <RelativeLayout
+                            android:layout_width="60dp"
+                            android:layout_height="match_parent">
+
+
+                            <ImageView
+                                android:id="@+id/edit_sticker_btn_bgImg"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_centerInParent="true"
+                                android:alpha="0.3"
+                                android:background="@mipmap/sticker_edit" />
+
+                            <Button
+                                android:id="@+id/edit_sticker_btn"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@null" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        // 编辑
+
+        <LinearLayout
+            android:id="@+id/edit_caption_or_sticker_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="99dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp">
+
+                    <TextView
+                        android:id="@+id/edit_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="编辑字幕"
+                        android:textColor="#373737"
+                        android:textSize="15sp" />
+
+                    <ImageButton
+                        android:id="@+id/edit_complete"
+                        android:layout_width="50dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/ellipse_btn_bg_normal"
+                        android:src="@mipmap/caption_complete" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp">
+
+                    <TextView
+                        android:id="@+id/operation_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="拖动两侧调整字幕的位置"
+                        android:textColor="#999999"
+                        android:textSize="10sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/sequence_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5px"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.yanzhi.record.edit.timelineeditor.NvsTimelineEditor
+                            android:id="@+id/timelineEditor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/border">
+
+                        </com.yanzhi.record.edit.timelineeditor.NvsTimelineEditor>
+
+                        <ImageView
+                            android:id="@+id/sequence_cursor"
+                            android:layout_width="4px"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/cursor" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <com.yanzhi.record.utils.EditCaptionTab
+                android:id="@+id/edit_caption_tab"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+            <com.yanzhi.record.utils.EditStickerCtl
+                android:id="@+id/edit_sticker_ctl"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:id="@+id/select_color_layout"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <GridView
+            android:id="@+id/font_color_grid_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:numColumns="8"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="8dp">
+
+        </GridView>
+        
+        <View
+            android:layout_width="13dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stroke_color"/>
+                <View
+                    android:id="@+id/custom_selected_color_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginBottom="1dp"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/custom_color_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="定制"
+                android:gravity="center"
+                android:textColor="#373737"/>
+            
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.yanzhi.record.utils.ColorPickerCtl
+        android:id="@+id/font_color_pickerctl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+    </com.yanzhi.record.utils.ColorPickerCtl>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:id="@+id/transparency_seekBar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="透明度"
+            android:textSize="13sp"
+            android:textColor="#535353"/>
+
+        <SeekBar
+            android:id="@+id/transparency_seekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:progressDrawable="@drawable/play_seek_bar"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:maxHeight="2dp"
+            android:thumb="@mipmap/block" />
+
+        <TextView
+            android:id="@+id/cur_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="0%"
+            android:textSize="13sp"
+            android:textColor="#535353"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

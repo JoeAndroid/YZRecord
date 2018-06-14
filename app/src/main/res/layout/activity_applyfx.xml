@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_fxmanange"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yanzhi.record.edit.FxManageActivity">
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@mipmap/navigationbg">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="center"
+            android:src="@mipmap/fxback" />
+
+        <TextView
+            android:id="@+id/redo_addvideo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="合成视频"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_below="@id/layout1"
+        android:orientation="vertical">
+
+        <com.yanzhi.record.edit.LiveWindow
+            android:id="@+id/liveWindow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/play_relativeLayout"
+                    android:layout_width="49dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="#e7f5ff">
+
+                    <ImageView
+                        android:id="@+id/button_Play"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@mipmap/play" />
+
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/gray">
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <com.yanzhi.record.edit.timelineeditor.NvsTimelineEditor
+                    android:id="@+id/timelineEditor"
+                    android:layout_width="0dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1">
+
+                </com.yanzhi.record.edit.timelineeditor.NvsTimelineEditor>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="9dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/pointer" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/curPlayTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="#546676"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="#546676"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/totoalDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="#546676"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@mipmap/menu_bg"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null">
+
+                <RelativeLayout
+                    android:id="@+id/theme_BgImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@mipmap/fxselectbutton">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/filter_BgImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@mipmap/fxselectbutton"
+                    android:visibility="invisible">
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/transition_BgImage"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@mipmap/fxselectbutton"
+                    android:visibility="invisible">
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/theme_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="主题"
+                    android:textColor="@drawable/menutextcolorselector"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/filter_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="滤镜"
+                    android:textColor="@drawable/menutextcolorselector"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/transition_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="转场"
+                    android:textColor="@drawable/menutextcolorselector"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
+        android:layout_below="@id/layout2"
+        android:layout_marginTop="6dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/theme_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/filter_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:visibility="invisible">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/transition_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:visibility="invisible">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/compilePage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#b2000000"
+        android:visibility="gone">
+        <com.yanzhi.record.edit.CompileVideo
+            android:id="@+id/compileLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.yanzhi.record.edit.CompileVideo>
+    </LinearLayout>
+</RelativeLayout>
