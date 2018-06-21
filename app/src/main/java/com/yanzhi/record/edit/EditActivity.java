@@ -195,7 +195,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                     getSubtitleByServer(new File(SDCARD_PATH + "/output_audio.m4a"));
                     break;
                 case UPDATE_SUBTITLE:
-                   /* for (int i = 0; i < subtitleList.size() - 1; i++) {
+                    for (int i = 0; i < subtitleList.size() - 1; i++) {
                         addCaption(subtitleList.get(i));
                         if (i == 0) {
                             NvsTimelineCaption captionNow = mTimeline.getFirstCaption();
@@ -204,11 +204,17 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                             PointF point2 = list.get(1);
                             PointF f1 = mLiveWindow.mapCanonicalToView(point1);
                             PointF f2 = mLiveWindow.mapCanonicalToView(point2);
-                            dist = (f2.y - f1.y) + f1.y;
+                            if (m_fromCap) {
+                                dist = f1.y * 2 /*- (f2.y - f1.y)*/;
+                            } else {
+                                dist = f1.y /*- (f2.y - f1.y)*/;
+                            }
                         }
                         // 移动字幕
                         mCurCaption.translateCaption(new PointF(0, -dist));
-                    }*/
+                    }
+                   /*
+
                     addCaption("我是一条字幕");
                     NvsTimelineCaption captionNow = mTimeline.getFirstCaption();
                     List<PointF> list = captionNow.getBoundingRectangleVertices();    // 获取字幕的原始包围矩形框变换后的顶点位置
@@ -217,12 +223,12 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                     PointF f1 = mLiveWindow.mapCanonicalToView(point1);
                     PointF f2 = mLiveWindow.mapCanonicalToView(point2);
                     if (m_fromCap) {
-                        dist = f1.y * 2 /*- (f2.y - f1.y)*/;
+                        dist = f1.y * 2 *//*- (f2.y - f1.y)*//*;
                     } else {
-                        dist = f1.y /*- (f2.y - f1.y)*/;
+                        dist = f1.y *//*- (f2.y - f1.y)*//*;
                     }
                     // 移动字幕
-                    mCurCaption.translateCaption(new PointF(0, -dist));
+                    mCurCaption.translateCaption(new PointF(0, -dist));*/
                     compileVideo();
                     break;
             }
@@ -1978,9 +1984,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                             progressDialog.dismiss();
                         }
                         Log.i(TAG, "onResponse----" + response);
-//                        isAddCaptionSuccess = true;
-                        m_handler.sendEmptyMessage(UPDATE_SUBTITLE);
-                       /* try {
+                        try {
                             JSONObject jsonObject = new JSONObject(response);
                             String code = jsonObject.getString("code");
                             String msg = jsonObject.getString("msg");
@@ -1995,7 +1999,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                                 isAddCaptionSuccess = false;
                                 if (!TextUtils.isEmpty(msg)) {
                                     Log.i(TAG, "msg----" + msg);
-//                                    Toast.makeText(EditActivity.this,"请求字幕失败",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(EditActivity.this, "请求字幕失败", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         } catch (Exception e) {
@@ -2004,7 +2008,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
-                        }*/
+                        }
                     }
                 });
     }

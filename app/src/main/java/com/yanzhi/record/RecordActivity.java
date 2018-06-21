@@ -753,7 +753,7 @@ public class RecordActivity extends Activity implements View.OnClickListener, Nv
             initTask();
             timer.schedule(timerTask, 0, 5);
 
-            mRecordTimelineView.setDuration((int) proLineTime);
+//            mRecordTimelineView.setDuration((int) proLineTime);
             mRecordTimeTxt.setVisibility(View.VISIBLE);
 
             //保存录制文件路径
@@ -877,7 +877,7 @@ public class RecordActivity extends Activity implements View.OnClickListener, Nv
 
                         }
                         //暂停计时
-                        startPausedTime = System.currentTimeMillis();
+//                        startPausedTime = System.currentTimeMillis();
                         startRecordTime = 0;
                         proLineTime = 0;
                         break;
