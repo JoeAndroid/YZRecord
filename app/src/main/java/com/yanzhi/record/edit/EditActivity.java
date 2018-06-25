@@ -68,7 +68,9 @@ import com.yanzhi.record.utils.TimeSpanInfo;
 
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -192,10 +194,10 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                 }
                 break;
                 case UPLOAD_AUDIO:
-                    getSubtitleByServer(new File(SDCARD_PATH + "/output_audio.m4a"));
+                    getSubtitleByServer(new File(SDCARD_PATH + "/output_audio.pcm"));
                     break;
                 case UPDATE_SUBTITLE:
-                    for (int i = 0; i < subtitleList.size() - 1; i++) {
+                    for (int i = 0; i < subtitleList.size(); i++) {
                         addCaption(subtitleList.get(i));
                         if (i == 0) {
                             NvsTimelineCaption captionNow = mTimeline.getFirstCaption();
@@ -230,6 +232,10 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                     // 移动字幕
                     mCurCaption.translateCaption(new PointF(0, -dist));*/
                     compileVideo();
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                        Toast.makeText(EditActivity.this, "添加字幕成功", Toast.LENGTH_SHORT).show();
+                    }
                     break;
             }
         }
@@ -244,8 +250,8 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
         mStreamingContext = NvsStreamingContext.init(this, null);
         setContentView(R.layout.activity_edit);
         getDataFromIntent();
-        muxerAudio();
         initUIView();
+        muxerAudio();
         initTimeline();
 
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mLiveWindow.getLayoutParams();
@@ -1163,6 +1169,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
     }
 
     private void addCaption(SubtitleBean caption) {
+        Log.i(TAG, "添加字幕");
         //添加字幕
         long inPoint = Long.valueOf(caption.getBg()) * 1000;
         long captionDuration = Long.valueOf(caption.getEd()) * 1000 - Long.valueOf(caption.getBg()) * 1000;
@@ -1173,6 +1180,12 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
         }
 
         mCurCaption = mTimeline.addCaption(caption.getOnebest(), inPoint, captionDuration, null);
+       /* if (m_fromCap) {
+            mCurCaption.setFontSize(70);
+        } else {
+            mCurCaption.setFontSize(50);
+        }*/
+        mCurCaption.setFontSize(45);
         seekTimeline(mStreamingContext.getTimelineCurrentPosition(mTimeline), mStreamingContext.STREAMING_ENGINE_SEEK_FLAG_SHOW_CAPTION_POSTER);
 
         //更新界面
@@ -1892,7 +1905,25 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
      * 分离出音频
      */
     private void muxerAudio() {
-        new Thread() {
+        AudioCodec audioCodec = AudioCodec.getInstance()
+                .setIOPath(arrayFilePath.get(0), SDCARD_PATH + "/output_audio.pcm")
+                .prepare();
+        audioCodec.setOnCompleteListener(new AudioCodec.OnCompleteListener() {
+            @Override
+            public void completed(ArrayList<byte[]> chunkPCMDataContainer) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(EditActivity.this, "PCM文件已生成-----" + SDCARD_PATH + "/output_audio.pcm", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                m_handler.sendEmptyMessage(UPLOAD_AUDIO);
+            }
+        });
+        audioCodec.startDecode();
+        progressDialog.show();
+        /*new Thread() {
             @Override
             public void run() {
                 mediaExtractor = new MediaExtractor();
@@ -1955,15 +1986,14 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                     e.printStackTrace();
                 }
             }
-        }.start();
+        }.start();*/
     }
 
     //发送音频获取字幕
     private void getSubtitleByServer(File file) {
-        progressDialog.show();
         OkHttpUtils
                 .post()
-                .addFile("audio", "output_audio.m4a", file)
+                .addFile("audio", "output_audio.pcm", file)
                 .url(NetWorkConfig.UPLOAD_FACE_DATA)
                 .addParams("audio", "audio")
                 .build()
@@ -1980,14 +2010,10 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
 
                     @Override
                     public void onResponse(String response, int id) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
                         Log.i(TAG, "onResponse----" + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String code = jsonObject.getString("code");
-                            String msg = jsonObject.getString("msg");
                             String result = jsonObject.getString("result");
                             if (!TextUtils.isEmpty(code) && code.equals("0")) {
                                 isAddCaptionSuccess = true;
@@ -1997,6 +2023,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
                                 }
                             } else {
                                 isAddCaptionSuccess = false;
+                                String msg = jsonObject.getString("msg");
                                 if (!TextUtils.isEmpty(msg)) {
                                     Log.i(TAG, "msg----" + msg);
                                     Toast.makeText(EditActivity.this, "请求字幕失败", Toast.LENGTH_SHORT).show();
