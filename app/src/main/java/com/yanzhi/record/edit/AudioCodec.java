@@ -97,6 +97,8 @@ public class AudioCodec {
             mediaExtractor.setDataSource(srcPath);//媒体文件的位置
             for (int i = 0; i < mediaExtractor.getTrackCount(); i++) {//遍历媒体轨道 此处我们传入的是音频文件，所以也就只有一条轨道
                 MediaFormat format = mediaExtractor.getTrackFormat(i);
+                format.setInteger(MediaFormat.KEY_CHANNEL_COUNT, 1);
+                format.setInteger(MediaFormat.KEY_SAMPLE_RATE, 16000);
                 format.setInteger(MediaFormat.KEY_BIT_RATE, AudioFormat.ENCODING_PCM_16BIT);
                 String mime = format.getString(MediaFormat.KEY_MIME);
                 if (mime.startsWith("audio")) {//获取音频轨道

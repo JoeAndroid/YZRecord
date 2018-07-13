@@ -1906,7 +1906,7 @@ public class EditActivity extends Activity implements NvsStreamingContext.Stream
      */
     private void muxerAudio() {
         AudioCodec audioCodec = AudioCodec.getInstance()
-                .setIOPath(arrayFilePath.get(0), SDCARD_PATH + "/output_audio.pcm")
+                .setIOPath(/*arrayFilePath.get(0)*/SDCARD_PATH + "/A.mp4", SDCARD_PATH + "/output_audio.pcm")
                 .prepare();
         audioCodec.setOnCompleteListener(new AudioCodec.OnCompleteListener() {
             @Override
